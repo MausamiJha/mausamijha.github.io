@@ -1,485 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Maushmi Kumari — AI/ML Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#060612;
+  --bg2:#0d0d1f;
+  --bg3:#13132a;
+  --accent:#8b5cf6;
+  --accent2:#c4b5fd;
+  --teal:#22d3ee;
+  --text:#f5f3ff;
+  --muted:#9ca3af;
+  --border:rgba(139,92,246,0.15);
+  --card:rgba(255,255,255,0.03);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 
-  :root {
-    --bg: #0a0a0f;
-    --bg2: #111118;
-    --bg3: #1a1a24;
-    --accent: #7c6cfc;
-    --accent2: #a78bfa;
-    --accent3: #38bdf8;
-    --text: #f0effe;
-    --muted: #8b8aa8;
-    --border: rgba(124,108,252,0.18);
-    --card: rgba(255,255,255,0.03);
-  }
+/* grid bg */
+body::before{content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(139,92,246,0.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(139,92,246,0.035) 1px,transparent 1px);
+  background-size:72px 72px;pointer-events:none;z-index:0}
 
-  html { scroll-behavior: smooth; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 5%;background:rgba(6,6,18,0.85);
+  backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--text)}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent2)}
+.nav-cta{background:var(--accent);color:#fff;padding:0.55rem 1.4rem;
+  border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;
+  text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
 
-  body {
-    font-family: 'Syne', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-    cursor: none;
-  }
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:4rem;padding:8rem 5% 5rem;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--teal);
+  border:1px solid rgba(34,211,238,0.2);padding:6px 14px;border-radius:100px;
+  margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--teal);
+  border-radius:50%;animation:blink 1.8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.5rem);
+  line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.2rem}
+.hero h1 em{font-style:italic;color:var(--accent2)}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.85;
+  max-width:480px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:#fff;padding:0.8rem 2rem;border-radius:100px;
+  font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  text-decoration:none;box-shadow:0 0 32px rgba(139,92,246,0.3);transition:all 0.2s}
+.btn-p:hover{box-shadow:0 0 56px rgba(139,92,246,0.5);transform:translateY(-2px)}
+.btn-o{border:1px solid var(--border);color:var(--text);padding:0.8rem 2rem;
+  border-radius:100px;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;
+  text-transform:uppercase;text-decoration:none;transition:all 0.2s}
+.btn-o:hover{border-color:var(--accent2);color:var(--accent2)}
 
-  /* Custom cursor */
-  .cursor {
-    width: 10px; height: 10px;
-    background: var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.15s ease;
-    mix-blend-mode: screen;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid var(--accent2);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: transform 0.35s ease, width 0.2s, height 0.2s;
-    transform: translate(-50%,-50%);
-    mix-blend-mode: screen;
-  }
+/* photo side */
+.hero-photo{position:relative;display:flex;justify-content:center;align-items:center}
+.photo-wrap{position:relative;width:340px;height:340px}
+.photo-ring{position:absolute;inset:-12px;border-radius:50%;
+  border:2px dashed rgba(139,92,246,0.35);animation:spin 18s linear infinite}
+.photo-ring2{position:absolute;inset:-28px;border-radius:50%;
+  border:1px dashed rgba(34,211,238,0.18);animation:spin 28s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo-img{width:340px;height:340px;border-radius:50%;object-fit:cover;
+  object-position:top center;
+  border:3px solid rgba(139,92,246,0.4);
+  box-shadow:0 0 60px rgba(139,92,246,0.25)}
+.photo-glow{position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(139,92,246,0.12),transparent 70%);
+  pointer-events:none}
 
-  /* Grid bg */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(124,108,252,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(124,108,252,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* stats row */
+.stats{display:flex;gap:3rem;margin-top:2.5rem;flex-wrap:wrap}
+.stat-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--text)}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:2px}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 4rem;
-    background: rgba(10,10,15,0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    color: var(--text);
-    letter-spacing: 0.02em;
-  }
-  .nav-logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent2); }
+/* SECTION */
+section{padding:6rem 5%;position:relative;z-index:1}
+.s-label{font-family:'JetBrains Mono',monospace;font-size:0.68rem;
+  color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);
+  line-height:1.1;margin-bottom:3rem}
+.s-title em{font-style:italic;color:var(--accent2)}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 8rem 4rem 4rem;
-    position: relative; z-index: 1;
-  }
-  .hero-inner { max-width: 900px; }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem; color: var(--accent2);
-    border: 1px solid var(--border);
-    padding: 6px 16px; border-radius: 100px;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero-tag::before {
-    content: ''; width: 6px; height: 6px;
-    background: var(--accent); border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%,100%{opacity:1;transform:scale(1)}
-    50%{opacity:0.4;transform:scale(1.4)}
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s 0.1s ease both;
-  }
-  .hero h1 em {
-    font-style: italic; color: var(--accent2);
-  }
-  .hero-sub {
-    font-size: 1.05rem; color: var(--muted); line-height: 1.8;
-    max-width: 560px; margin-bottom: 2.5rem;
-    animation: fadeUp 0.8s 0.2s ease both;
-  }
-  .hero-ctas {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
-  .btn-primary {
-    background: var(--accent); color: #fff;
-    padding: 0.85rem 2rem; border-radius: 100px;
-    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 0 30px rgba(124,108,252,0.35);
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(124,108,252,0.55); }
-  .btn-outline {
-    border: 1px solid var(--border); color: var(--text);
-    padding: 0.85rem 2rem; border-radius: 100px;
-    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.sk-card{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.6rem;transition:all 0.3s;position:relative;overflow:hidden}
+.sk-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--teal));
+  opacity:0;transition:opacity 0.3s}
+.sk-card:hover{border-color:rgba(139,92,246,0.35);transform:translateY(-4px)}
+.sk-card:hover::after{opacity:1}
+.sk-icon{font-size:1.6rem;margin-bottom:0.9rem}
+.sk-head{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--accent2);margin-bottom:0.8rem}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--muted);
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  padding:3px 9px;border-radius:100px}
 
-  /* Floating orbs */
-  .orb {
-    position: absolute; border-radius: 50%;
-    filter: blur(80px); pointer-events: none; z-index: 0;
-  }
-  .orb1 { width:500px;height:500px; background:rgba(124,108,252,0.12); top:-100px; right:-100px; }
-  .orb2 { width:300px;height:300px; background:rgba(56,189,248,0.08); bottom:50px; left:100px; }
+/* EXPERIENCE */
+.alt-bg{background:var(--bg2)}
+.exp-list{display:flex;flex-direction:column;gap:1.5rem}
+.ex-card{background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:2rem;transition:border-color 0.3s}
+.ex-card:hover{border-color:rgba(139,92,246,0.3)}
+.ex-top{display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:1.2rem;gap:1rem;flex-wrap:wrap}
+.ex-co{font-size:1.1rem;font-weight:600}
+.ex-role{font-family:'JetBrains Mono',monospace;font-size:0.73rem;
+  color:var(--accent2);margin-top:4px}
+.ex-date{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted);
+  background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  padding:4px 12px;border-radius:100px;white-space:nowrap}
+.ex-bullets{list-style:none}
+.ex-bullets li{font-size:0.875rem;color:var(--muted);line-height:1.75;
+  padding:0.4rem 0 0.4rem 1.1rem;position:relative;
+  border-bottom:1px solid rgba(255,255,255,0.04)}
+.ex-bullets li:last-child{border-bottom:none}
+.ex-bullets li::before{content:'▸';color:var(--accent);font-size:0.6rem;
+  position:absolute;left:0;top:50%;transform:translateY(-50%)}
 
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(24px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+.proj-card{background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:1.7rem;transition:all 0.3s}
+.proj-card:hover{border-color:rgba(139,92,246,0.35);transform:translateY(-4px)}
+.proj-num{font-family:'JetBrains Mono',monospace;font-size:0.68rem;
+  color:var(--accent);margin-bottom:0.8rem}
+.proj-name{font-size:1rem;font-weight:600;margin-bottom:0.6rem}
+.proj-desc{font-size:0.83rem;color:var(--muted);line-height:1.75;margin-bottom:1.1rem}
 
-  /* SECTION common */
-  section { padding: 6rem 4rem; position: relative; z-index: 1; }
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem; color: var(--accent);
-    letter-spacing: 0.2em; text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.1; margin-bottom: 3rem;
-  }
+/* AWARDS */
+.award-grid{display:flex;flex-wrap:wrap;gap:1rem}
+.award-chip{display:flex;align-items:center;gap:10px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:100px;padding:0.75rem 1.4rem;font-size:0.82rem;font-weight:500;
+  transition:border-color 0.2s}
+.award-chip:hover{border-color:rgba(139,92,246,0.4)}
+.award-chip span{font-size:1rem}
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-  }
-  .skill-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.8rem;
-    transition: border-color 0.3s, transform 0.3s;
-    position: relative; overflow: hidden;
-  }
-  .skill-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent3));
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .skill-card:hover { border-color: rgba(124,108,252,0.4); transform: translateY(-4px); }
-  .skill-card:hover::before { opacity: 1; }
-  .skill-icon {
-    font-size: 1.8rem; margin-bottom: 1rem;
-  }
-  .skill-title {
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--accent2); margin-bottom: 0.8rem;
-  }
-  .skill-tags {
-    display: flex; flex-wrap: wrap; gap: 6px;
-  }
-  .tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem; color: var(--muted);
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 3px 10px; border-radius: 100px;
-  }
+/* CONTACT */
+.contact-inner{max-width:680px;margin:0 auto;text-align:center}
+.contact-inner .s-title{margin-bottom:1rem}
+.contact-sub{font-size:0.95rem;color:var(--muted);line-height:1.85;margin-bottom:2.5rem}
+.contact-cards{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.c-card{display:flex;flex-direction:column;align-items:center;gap:6px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:1.2rem 1.8rem;text-decoration:none;
+  transition:all 0.2s;min-width:160px}
+.c-card:hover{border-color:rgba(139,92,246,0.4);transform:translateY(-3px)}
+.c-card-icon{font-size:1.4rem}
+.c-card-label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--accent2)}
+.c-card-val{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted)}
 
-  /* EXPERIENCE */
-  .exp-list { display: flex; flex-direction: column; gap: 2rem; }
-  .exp-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem 2.2rem;
-    transition: border-color 0.3s;
-  }
-  .exp-card:hover { border-color: rgba(124,108,252,0.35); }
-  .exp-header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.5rem;
-  }
-  .exp-company {
-    font-size: 1.15rem; font-weight: 700; color: var(--text);
-  }
-  .exp-role {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem; color: var(--accent2); margin-top: 4px;
-  }
-  .exp-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem; color: var(--muted);
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    padding: 5px 12px; border-radius: 100px;
-    white-space: nowrap;
-  }
-  .exp-bullets { list-style: none; }
-  .exp-bullets li {
-    font-size: 0.88rem; color: var(--muted); line-height: 1.7;
-    padding: 0.4rem 0 0.4rem 1.2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    position: relative;
-  }
-  .exp-bullets li:last-child { border-bottom: none; }
-  .exp-bullets li::before {
-    content: '▸'; color: var(--accent); font-size: 0.65rem;
-    position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-  }
+/* FOOTER */
+footer{text-align:center;padding:2rem 5%;border-top:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--muted);
+  position:relative;z-index:1}
 
-  /* PROJECTS / HIGHLIGHTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-  .proj-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.8rem;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .proj-card:hover { border-color: rgba(124,108,252,0.4); transform: translateY(-4px); }
-  .proj-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem; color: var(--accent); margin-bottom: 1rem;
-  }
-  .proj-name {
-    font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem;
-  }
-  .proj-desc {
-    font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem;
-  }
-  .proj-stack {
-    display: flex; flex-wrap: wrap; gap: 6px;
-  }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s}
+.reveal.in{opacity:1;transform:none}
 
-  /* CONTACT */
-  .contact-inner {
-    max-width: 700px; margin: 0 auto; text-align: center;
-  }
-  .contact-inner .section-title { margin-bottom: 1rem; }
-  .contact-sub {
-    font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem;
-  }
-  .contact-links {
-    display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
-  }
-  .contact-link {
-    display: flex; align-items: center; gap: 8px;
-    font-family: 'DM Mono', monospace; font-size: 0.8rem;
-    color: var(--muted); text-decoration: none;
-    border: 1px solid var(--border); padding: 0.7rem 1.4rem;
-    border-radius: 100px; transition: all 0.2s;
-  }
-  .contact-link:hover { color: var(--accent2); border-color: var(--accent2); }
-
-  /* FOOTER */
-  footer {
-    text-align: center; padding: 2.5rem;
-    font-family: 'DM Mono', monospace; font-size: 0.7rem;
-    color: var(--muted); border-top: 1px solid var(--border);
-    z-index: 1; position: relative;
-  }
-
-  /* SCROLL REVEAL */
-  .reveal {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    section, .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .hero { padding-top: 7rem; }
-  }
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;text-align:center;gap:2.5rem;padding-top:7rem}
+  .hero-photo{order:-1}
+  .hero-sub,.hero-btns,.stats{justify-content:center}
+  nav .nav-links{display:none}
+  .photo-wrap,.photo-img{width:240px;height:240px}
+}
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <nav>
-  <div class="nav-logo">M<span>.</span>Kumari</div>
+  <div class="logo">M<span>.</span>Kumari</div>
   <ul class="nav-links">
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <a href="mailto:mausamijha43@gmail.com" class="nav-cta">Hire Me</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="hero-inner">
-    <div class="hero-tag">Available for freelance work</div>
-    <h1>Maushmi<br /><em>Kumari</em></h1>
-    <p class="hero-sub">
-      AI/ML Engineer specializing in Agentic AI, RAG pipelines, and LLM integration.
-      I build intelligent systems that think, reason, and actually ship.
-    </p>
-    <div class="hero-ctas">
-      <a href="#projects" class="btn-primary">View My Work</a>
-      <a href="#contact" class="btn-outline">Let's Talk</a>
+  <div class="hero-left">
+    <div class="hero-badge">Open to freelance &amp; projects</div>
+    <h1>Maushmi<br/><em>Kumari</em></h1>
+    <p class="hero-sub">AI/ML Engineer specializing in Agentic AI, RAG pipelines &amp; LLM integration. I build intelligent systems that think, reason, and actually ship to production.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-p">View My Work</a>
+      <a href="#contact" class="btn-o">Let's Talk</a>
+    </div>
+    <div class="stats">
+      <div><div class="stat-val">4+</div><div class="stat-label">Years Experience</div></div>
+      <div><div class="stat-val">2</div><div class="stat-label">Top Companies</div></div>
+      <div><div class="stat-val">6+</div><div class="stat-label">Major Projects</div></div>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-wrap">
+      <div class="photo-ring"></div>
+      <div class="photo-ring2"></div>
+      <img class="photo-img" src="data:image/jpeg;base64,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" alt="Maushmi Kumari"/>
+      <div class="photo-glow"></div>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">What I do</div>
-  <h2 class="section-title reveal">Skills &amp; Expertise</h2>
+  <div class="s-label">What I do</div>
+  <h2 class="s-title reveal">Skills &amp; <em>Expertise</em></h2>
   <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">🤖</div>
-      <div class="skill-title">Agentic AI</div>
-      <div class="skill-tags">
-        <span class="tag">LangChain</span>
-        <span class="tag">LangGraph</span>
-        <span class="tag">AutoGen</span>
-        <span class="tag">ReAct</span>
-        <span class="tag">Reflexion</span>
-        <span class="tag">Watsonx Orchestrate</span>
-      </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon">🤖</div>
+      <div class="sk-head">Agentic AI</div>
+      <div class="tags"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">AutoGen</span><span class="tag">ReAct</span><span class="tag">Reflexion</span><span class="tag">Watsonx Orchestrate</span></div>
     </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🔍</div>
-      <div class="skill-title">RAG &amp; Retrieval</div>
-      <div class="skill-tags">
-        <span class="tag">OpenSearch</span>
-        <span class="tag">ChromaDB</span>
-        <span class="tag">BM25 + Dense</span>
-        <span class="tag">Cross-Encoder</span>
-        <span class="tag">Semantic Chunking</span>
-      </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon">🔍</div>
+      <div class="sk-head">RAG &amp; Retrieval</div>
+      <div class="tags"><span class="tag">OpenSearch</span><span class="tag">ChromaDB</span><span class="tag">BM25 + Dense</span><span class="tag">Cross-Encoder</span><span class="tag">Semantic Chunking</span></div>
     </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🧠</div>
-      <div class="skill-title">LLMs &amp; Models</div>
-      <div class="skill-tags">
-        <span class="tag">GPT-4</span>
-        <span class="tag">LLaMA-2</span>
-        <span class="tag">Mixtral</span>
-        <span class="tag">Granite</span>
-        <span class="tag">HuggingFace</span>
-        <span class="tag">PyTorch</span>
-      </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon">🧠</div>
+      <div class="sk-head">LLMs &amp; Models</div>
+      <div class="tags"><span class="tag">GPT-4</span><span class="tag">LLaMA-2</span><span class="tag">Mixtral</span><span class="tag">Granite</span><span class="tag">HuggingFace</span><span class="tag">PyTorch</span></div>
     </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⚡</div>
-      <div class="skill-title">Backend Engineering</div>
-      <div class="skill-tags">
-        <span class="tag">Python</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">Django</span>
-        <span class="tag">Flask</span>
-        <span class="tag">Asyncio</span>
-        <span class="tag">REST APIs</span>
-      </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon">⚡</div>
+      <div class="sk-head">Backend Engineering</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Django</span><span class="tag">Flask</span><span class="tag">Asyncio</span><span class="tag">REST APIs</span></div>
     </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">☁️</div>
-      <div class="skill-title">MLOps &amp; Cloud</div>
-      <div class="skill-tags">
-        <span class="tag">Docker</span>
-        <span class="tag">Kubernetes</span>
-        <span class="tag">GKE</span>
-        <span class="tag">Terraform</span>
-        <span class="tag">Ansible</span>
-        <span class="tag">Jenkins</span>
-      </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon">☁️</div>
+      <div class="sk-head">MLOps &amp; Cloud</div>
+      <div class="tags"><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">GKE</span><span class="tag">Terraform</span><span class="tag">Ansible</span><span class="tag">Jenkins</span></div>
     </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🗄️</div>
-      <div class="skill-title">Data &amp; Databases</div>
-      <div class="skill-tags">
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">MongoDB</span>
-        <span class="tag">Redis</span>
-        <span class="tag">OpenSearch</span>
-        <span class="tag">DB2</span>
-      </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon">🗄️</div>
+      <div class="sk-head">Databases</div>
+      <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">OpenSearch</span><span class="tag">DB2</span></div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" style="background: var(--bg2);">
-  <div class="section-label">Where I've worked</div>
-  <h2 class="section-title reveal">Experience</h2>
+<section id="experience" class="alt-bg">
+  <div class="s-label">Where I've worked</div>
+  <h2 class="s-title reveal">Work <em>Experience</em></h2>
   <div class="exp-list">
-    <div class="exp-card reveal">
-      <div class="exp-header">
+    <div class="ex-card reveal">
+      <div class="ex-top">
         <div>
-          <div class="exp-company">IBM Software Labs</div>
-          <div class="exp-role">Python AI/ML Engineer</div>
+          <div class="ex-co">IBM Software Labs</div>
+          <div class="ex-role">Python AI/ML Engineer</div>
         </div>
-        <span class="exp-date">Oct 2024 – Present</span>
+        <span class="ex-date">Oct 2024 – Present · Bengaluru</span>
       </div>
-      <ul class="exp-bullets">
-        <li>Architected SmartDebug — an autonomous agentic workflow using LangGraph and ReAct patterns for intelligent GitHub issue resolution through historical context matching and Hybrid Search.</li>
-        <li>Built Sales Intelligence Agent using FastAPI microservices with MCP (Model Context Protocol) to standardize context ingestion from LinkedIn APIs and internal databases.</li>
-        <li>Developed RAG pipelines with granite-13b-instruct-v2, OpenSearch vector store, Redis semantic caching, and Cross-Encoder re-ranking.</li>
-        <li>Enhanced Watsonx Code Assistant for IBM Z mainframe modernization with COBOL-to-Java AI translation using few-shot prompt engineering.</li>
-        <li>Contributed to Ansible Core (Open Source) — Python interpreter discovery for z/OS and EBCDIC/ASCII encoding bridge for mainframe automation.</li>
+      <ul class="ex-bullets">
+        <li>Architected SmartDebug — autonomous agentic workflow using LangGraph &amp; ReAct patterns for GitHub issue resolution via Hybrid Search (BM25 + dense embeddings + Cross-Encoder re-ranking).</li>
+        <li>Built Sales Intelligence Agent with FastAPI microservices &amp; MCP (Model Context Protocol) to decouple LLM reasoning from LinkedIn API data fetching.</li>
+        <li>Developed Financial Allocation Agent on Watsonx Orchestrate with multi-step reasoning loops and automated decision routing for approval workflows.</li>
+        <li>Built RAG pipelines using granite-13b-instruct-v2, OpenSearch vector store &amp; Redis semantic caching (cosine similarity-based).</li>
+        <li>Enhanced Watsonx Code Assistant for IBM Z mainframe modernization — COBOL-to-Java AI translation using few-shot prompt engineering.</li>
+        <li>Contributed to Ansible Core (Open Source) — Python interpreter discovery for z/OS &amp; EBCDIC/ASCII encoding bridge.</li>
       </ul>
     </div>
-    <div class="exp-card reveal">
-      <div class="exp-header">
+    <div class="ex-card reveal">
+      <div class="ex-top">
         <div>
-          <div class="exp-company">TCS Digital</div>
-          <div class="exp-role">Software Developer</div>
+          <div class="ex-co">TCS Digital</div>
+          <div class="ex-role">Software Developer</div>
         </div>
-        <span class="exp-date">Aug 2021 – Sep 2024</span>
+        <span class="ex-date">Aug 2021 – Sep 2024 · Bengaluru</span>
       </div>
-      <ul class="exp-bullets">
-        <li>Designed post-quantum cryptography migration strategy using NIST-approved algorithms — Kyber for key encapsulation, Dilithium for digital signatures.</li>
-        <li>Built ML-driven risk classifier using scikit-learn ensemble methods (Random Forest + Gradient Boosting) for security and compliance dimensions.</li>
-        <li>Deployed PKI infrastructure on GKE using Terraform and Helm, with CI/CD pipelines via Jenkins including automated security scanning (Trivy, SonarQube).</li>
-        <li>Orchestrated zero-downtime deployments using blue-green patterns and Kubernetes rolling updates with health check configurations.</li>
+      <ul class="ex-bullets">
+        <li>Designed post-quantum cryptography migration for financial microservices using NIST-approved Kyber &amp; Dilithium algorithms via liboqs library.</li>
+        <li>Built ML-driven risk classifier using scikit-learn ensemble methods (Random Forest + Gradient Boosting) with pandas feature engineering.</li>
+        <li>Deployed PKI infrastructure on GKE using Terraform &amp; Helm; built CI/CD pipelines via Jenkins with Trivy &amp; SonarQube security scanning.</li>
+        <li>Orchestrated zero-downtime deployments with blue-green patterns &amp; Kubernetes rolling updates with health check configurations.</li>
       </ul>
     </div>
   </div>
@@ -487,140 +308,97 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-label">What I've built</div>
-  <h2 class="section-title reveal">Key Projects</h2>
-  <div class="projects-grid">
+  <div class="s-label">What I've built</div>
+  <h2 class="s-title reveal">Featured <em>Projects</em></h2>
+  <div class="proj-grid">
     <div class="proj-card reveal">
-      <div class="proj-num">01 / IBM</div>
+      <div class="proj-num">01 · IBM</div>
       <div class="proj-name">SmartDebug Agent</div>
-      <p class="proj-desc">Autonomous agentic workflow that resolves GitHub issues by matching historical context using Hybrid Search — BM25 sparse retrieval + dense embeddings + Cross-Encoder re-ranking.</p>
-      <div class="proj-stack">
-        <span class="tag">LangGraph</span><span class="tag">ReAct</span><span class="tag">BM25</span><span class="tag">sentence-transformers</span>
-      </div>
+      <p class="proj-desc">Autonomous GitHub issue resolver using LangGraph + ReAct. Hybrid Search with BM25 sparse retrieval, dense embeddings &amp; Cross-Encoder re-ranking for historical context matching.</p>
+      <div class="tags"><span class="tag">LangGraph</span><span class="tag">ReAct</span><span class="tag">BM25</span><span class="tag">sentence-transformers</span></div>
     </div>
     <div class="proj-card reveal">
-      <div class="proj-num">02 / IBM</div>
+      <div class="proj-num">02 · IBM</div>
       <div class="proj-name">Sales Intelligence Agent</div>
-      <p class="proj-desc">FastAPI microservices with async Python for concurrent data orchestration. MCP integration to decouple LLM reasoning from data fetching across LinkedIn APIs and internal databases.</p>
-      <div class="proj-stack">
-        <span class="tag">FastAPI</span><span class="tag">MCP</span><span class="tag">Asyncio</span><span class="tag">Python</span>
-      </div>
+      <p class="proj-desc">FastAPI microservices with async Python &amp; MCP integration to decouple LLM reasoning from LinkedIn API and internal database data fetching.</p>
+      <div class="tags"><span class="tag">FastAPI</span><span class="tag">MCP</span><span class="tag">Asyncio</span><span class="tag">Python</span></div>
     </div>
     <div class="proj-card reveal">
-      <div class="proj-num">03 / IBM</div>
+      <div class="proj-num">03 · IBM</div>
       <div class="proj-name">Financial Allocation Agent</div>
-      <p class="proj-desc">Watsonx Orchestrate agent with multi-step reasoning loops, dynamic tool selection, and automated decision routing for complex financial approval workflows.</p>
-      <div class="proj-stack">
-        <span class="tag">Watsonx</span><span class="tag">LLM Reasoning</span><span class="tag">Tool Selection</span>
-      </div>
+      <p class="proj-desc">Watsonx Orchestrate agent with multi-step reasoning loops, dynamic tool selection &amp; automated decision routing for complex financial approval workflows.</p>
+      <div class="tags"><span class="tag">Watsonx</span><span class="tag">LLM Reasoning</span><span class="tag">Tool Selection</span></div>
     </div>
     <div class="proj-card reveal">
-      <div class="proj-num">04 / TCS</div>
-      <div class="proj-name">Post-Quantum Crypto System</div>
-      <p class="proj-desc">Enterprise PQC migration for financial microservices using NIST-approved Kyber + Dilithium algorithms with quantum-safe TLS 1.3 tunnels via OpenSSL 3.x.</p>
-      <div class="proj-stack">
-        <span class="tag">Kyber</span><span class="tag">Dilithium</span><span class="tag">OpenSSL</span><span class="tag">liboqs</span>
-      </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-num">05 / TCS</div>
-      <div class="proj-name">ML Risk Classifier</div>
-      <p class="proj-desc">Ensemble ML model (Random Forest + Gradient Boosting) with pandas feature engineering to classify security and compliance risk across financial microservices.</p>
-      <div class="proj-stack">
-        <span class="tag">scikit-learn</span><span class="tag">Random Forest</span><span class="tag">pandas</span>
-      </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-num">06 / IBM</div>
+      <div class="proj-num">04 · IBM</div>
       <div class="proj-name">RAG Pipeline (Granite)</div>
-      <p class="proj-desc">Production RAG pipeline using granite-13b-instruct-v2, OpenSearch vector store, Redis semantic caching with cosine similarity, and Cross-Encoder re-ranking for optimal token efficiency.</p>
-      <div class="proj-stack">
-        <span class="tag">Granite</span><span class="tag">OpenSearch</span><span class="tag">Redis</span><span class="tag">RAG</span>
-      </div>
+      <p class="proj-desc">Production RAG system with granite-13b-instruct-v2, OpenSearch vector store, Redis semantic caching &amp; Cross-Encoder re-ranking for optimal token efficiency.</p>
+      <div class="tags"><span class="tag">Granite</span><span class="tag">OpenSearch</span><span class="tag">Redis</span><span class="tag">RAG</span></div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-num">05 · TCS</div>
+      <div class="proj-name">Post-Quantum Crypto System</div>
+      <p class="proj-desc">Enterprise PQC migration for financial microservices using NIST-approved Kyber + Dilithium algorithms with quantum-safe TLS 1.3 via OpenSSL 3.x.</p>
+      <div class="tags"><span class="tag">Kyber</span><span class="tag">Dilithium</span><span class="tag">OpenSSL</span><span class="tag">liboqs</span></div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-num">06 · TCS</div>
+      <div class="proj-name">ML Risk Classifier</div>
+      <p class="proj-desc">Ensemble model (Random Forest + Gradient Boosting) with pandas feature engineering to classify security and compliance risk across financial microservices.</p>
+      <div class="tags"><span class="tag">scikit-learn</span><span class="tag">Random Forest</span><span class="tag">pandas</span></div>
     </div>
   </div>
 </section>
 
 <!-- AWARDS -->
-<section style="background: var(--bg2); padding: 4rem;">
-  <div class="section-label">Recognition</div>
-  <h2 class="section-title reveal">Awards</h2>
-  <div style="display:flex; flex-wrap:wrap; gap:1rem;">
-    <div class="skill-card reveal" style="padding:1.2rem 1.6rem; flex:1; min-width:200px;">
-      <div style="font-size:1.5rem; margin-bottom:0.5rem;">⭐</div>
-      <div style="font-size:0.85rem; font-weight:700;">IBM Labs Star of the Month</div>
-    </div>
-    <div class="skill-card reveal" style="padding:1.2rem 1.6rem; flex:1; min-width:200px;">
-      <div style="font-size:1.5rem; margin-bottom:0.5rem;">🏆</div>
-      <div style="font-size:0.85rem; font-weight:700;">2025 IBMer Watsonx Challenge</div>
-    </div>
-    <div class="skill-card reveal" style="padding:1.2rem 1.6rem; flex:1; min-width:200px;">
-      <div style="font-size:1.5rem; margin-bottom:0.5rem;">🎖️</div>
-      <div style="font-size:0.85rem; font-weight:700;">Red Hat Community Recognition</div>
-    </div>
-    <div class="skill-card reveal" style="padding:1.2rem 1.6rem; flex:1; min-width:200px;">
-      <div style="font-size:1.5rem; margin-bottom:0.5rem;">🐍</div>
-      <div style="font-size:0.85rem; font-weight:700;">HackerRank 5-Star Python</div>
-    </div>
-    <div class="skill-card reveal" style="padding:1.2rem 1.6rem; flex:1; min-width:200px;">
-      <div style="font-size:1.5rem; margin-bottom:0.5rem;">💎</div>
-      <div style="font-size:0.85rem; font-weight:700;">TCS Gems Award</div>
-    </div>
+<section class="alt-bg">
+  <div class="s-label">Recognition</div>
+  <h2 class="s-title reveal"><em>Awards</em> &amp; Honors</h2>
+  <div class="award-grid reveal">
+    <div class="award-chip"><span>⭐</span> IBM Labs Star of the Month</div>
+    <div class="award-chip"><span>🏆</span> 2025 IBMer Watsonx Challenge</div>
+    <div class="award-chip"><span>🎖️</span> Red Hat Community Recognition</div>
+    <div class="award-chip"><span>🔷</span> IBM Xlence Advocate</div>
+    <div class="award-chip"><span>🐍</span> HackerRank 5-Star Python</div>
+    <div class="award-chip"><span>💎</span> TCS Gems Award</div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <div class="section-label">Get in touch</div>
-    <h2 class="section-title reveal">Let's Build<br /><em style="font-family:'DM Serif Display',serif; font-style:italic; color:var(--accent2);">Something Smart</em></h2>
-    <p class="contact-sub reveal">
-      Open to freelance projects, short-term contracts, and consulting work in Agentic AI, RAG pipelines, and Python backend systems.
-    </p>
-    <div class="contact-links reveal">
-      <a href="mailto:mausamijha43@gmail.com" class="contact-link">
-        ✉️ mausamijha43@gmail.com
+    <div class="s-label">Get in touch</div>
+    <h2 class="s-title reveal">Let's Build Something <em>Smart</em></h2>
+    <p class="contact-sub reveal">Open to freelance projects, short-term contracts &amp; consulting in Agentic AI, RAG pipelines &amp; Python backend systems. Based in Bengaluru, available remotely worldwide.</p>
+    <div class="contact-cards reveal">
+      <a href="mailto:mausamijha43@gmail.com" class="c-card">
+        <div class="c-card-icon">✉️</div>
+        <div class="c-card-label">Email</div>
+        <div class="c-card-val">mausamijha43@gmail.com</div>
       </a>
-      <a href="https://www.linkedin.com/in/amit-ranjan-jha" class="contact-link" target="_blank">
-        💼 LinkedIn
+      <a href="https://in.linkedin.com/in/mausamik1912" target="_blank" class="c-card">
+        <div class="c-card-icon">💼</div>
+        <div class="c-card-label">LinkedIn</div>
+        <div class="c-card-val">mausamik1912</div>
       </a>
-      <a href="tel:+916200832426" class="contact-link">
-        📞 +91 6200832426
+      <a href="tel:+916200832426" class="c-card">
+        <div class="c-card-icon">📞</div>
+        <div class="c-card-label">Phone</div>
+        <div class="c-card-val">+91 6200832426</div>
       </a>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>© 2025 Maushmi Kumari — AI/ML Engineer · Bengaluru, India</p>
-</footer>
+<footer>© 2025 Maushmi Kumari · AI/ML Engineer · Bengaluru, India</footer>
 
 <script>
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = (mx - 5) + 'px';
-    cursor.style.top  = (my - 5) + 'px';
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('in'), i*90);
   });
-  function animRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animRing);
-  }
-  animRing();
-
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
